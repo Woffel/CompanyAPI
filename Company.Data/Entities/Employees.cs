@@ -18,10 +18,6 @@ namespace Company.Data.Entities
         public int Salary { get; set; }
         [Required]
         public bool UnionMember { get; set; }
-        [Required]
-        public CompanyDepartments? DepartmentId { get; set; }
-        [Required]
-        public CompanyDepartments? CompanyId { get; set; }
 
     }
 }

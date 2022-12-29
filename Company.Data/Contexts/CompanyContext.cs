@@ -25,8 +25,8 @@ namespace Company.Data.Contexts
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<CompanyDepartments>().HasKey(ci => new { ci.CompanyId, ci.DepartmentId });
-            builder.Entity<EmployeePositions>().HasKey(ci => new { ci.employeeId, ci.positionId });
+           // builder.Entity<CompanyDepartments>().HasKey(ci => new { ci.CompanyId, ci.DepartmentId });
+           // builder.Entity<EmployeePositions>().HasKey(ci => new { ci.employeeId, ci.positionId });
 
         }
     }
