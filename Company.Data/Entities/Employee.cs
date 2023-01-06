@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Company.Data.Interfaces;
+
 
 namespace Company.Data.Entities
 {
-    public class Employees
+    public class Employee : IEntity
     {
         public int Id { get; set; }
         [Required]
@@ -19,5 +21,7 @@ namespace Company.Data.Entities
         [Required]
         public bool UnionMember { get; set; }
 
+        public CompanyDepartment? CompanyDepartment { get; set; }
+        public ICollection<EmployeePositions> Positions { get; set; }
     }
 }

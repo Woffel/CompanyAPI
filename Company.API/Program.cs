@@ -1,3 +1,5 @@
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<CompanyContext>(
@@ -12,19 +14,23 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+builder.Services.AddScoped<IDbService, DBService>();
+
+
 
 var config = new MapperConfiguration(cfg =>
 {
-    cfg.CreateMap<Companies, CompanyDTO>().ReverseMap();
-    cfg.CreateMap<Employees, EmployeeDTO>().ReverseMap();
-    cfg.CreateMap<Positions, PositionDTO>().ReverseMap();
-    cfg.CreateMap<Departments, DepartmentDTO>().ReverseMap();
+    cfg.CreateMap<Company.Data.Entities.Company, CompanyDTO>().ReverseMap();
+    cfg.CreateMap<Employee, EmployeeDTO>().ReverseMap();
+    cfg.CreateMap<Position, PositionDTO>().ReverseMap();
+    cfg.CreateMap<Department, DepartmentDTO>().ReverseMap();
 });
 
 var mapper = config.CreateMapper();
 
+builder.Services.AddSingleton(mapper);
 
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

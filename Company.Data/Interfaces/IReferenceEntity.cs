@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Company.Data
+namespace Company.Data.Interfaces
 {
-    internal interface IDbService
+    public interface IReferenceEntity
     {
     }
 }
