@@ -5,6 +5,7 @@ global using Company.Data.Entities;
 global using Company.Common.DTOs;
 global using Company.Data.Services;
 global using Company.Data.Interfaces;
+global using Company.API.Extensions;
 //global using Company.Data.Interfaces;
 //global using Company.Data.Services;
 //global using Company.Common.DTOs;

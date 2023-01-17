@@ -8,10 +8,10 @@ namespace Company.Common.DTOs
 {
     public class CompanyDTO
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string? CompanyName { get; set; }
 
-        public CompanyDTO(string Id, string CompanyName)
+        public CompanyDTO(int Id, string CompanyName)
         {
             this.Id = Id;
             this.CompanyName = CompanyName;
