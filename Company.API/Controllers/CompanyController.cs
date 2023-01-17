@@ -36,6 +36,7 @@ namespace Company.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IResult> Delete(int id) =>
             await _db.HttpDeleteAsync<Company.Data.Entities.Company>(id);
+        //Uhello
             
     }
 }
