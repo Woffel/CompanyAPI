@@ -20,7 +20,7 @@ namespace Company.API.Controllers
         // GET api/<TestController>/ id
         [HttpGet("{id}")]
         public async Task<IResult> Get(int id) => 
-            await _db.HttpGetAsync<Company.Data.Entities.Company, CompanyDTO>();
+            await _db.HttpSingleAsync<Company.Data.Entities.Company, CompanyDTO>(id);
 
         // POST api/<TestController>
         [HttpPost]
@@ -36,7 +36,7 @@ namespace Company.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IResult> Delete(int id) =>
             await _db.HttpDeleteAsync<Company.Data.Entities.Company>(id);
-        //Uhello
+        //aisdoai blobloblblop
             
     }
 }

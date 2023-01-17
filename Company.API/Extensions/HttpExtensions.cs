@@ -28,14 +28,13 @@
                 var entity = await db.AddAsync<TEntity, TDto>(dto);
                 if (await db.SaveChangesAsync())
                 {
-                    var node = typeof(Company.Data.Entities.Company).Name.ToLower();
+                    var node = typeof(TEntity).Name.ToLower();
                     return Results.Created($"{node} / {entity}", entity);
                 }
             }
             catch (Exception e)
             {
                 return Results.BadRequest($"Couldn't add the {typeof(TEntity).Name} entity.\n{e}.");
-
             }
             return Results.BadRequest($"Couldn't add the {typeof(TEntity).Name} entity.");
         }
