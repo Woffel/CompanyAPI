@@ -74,12 +74,27 @@ namespace Company.Data.Services
                 var entity = await SingleAsync<TEntity>(e => e.Id.Equals(id));
                 if(entity == null) return false;
                 _db.Remove(entity);
-                return true;
             }
             catch (Exception e)
             { 
                 throw;
             }
+            return true;
+        }
+
+        public bool Delete<TReferenceEntity, TDto>(TDto dto) where TReferenceEntity : class where TDto : class
+        {
+            try
+            {
+                var entity = _mapper.Map<TReferenceEntity>(dto);
+                if(entity == null) return false;
+                _db.Remove(entity);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return true;
         }
     }
 }

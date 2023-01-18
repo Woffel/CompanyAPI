@@ -8,36 +8,20 @@ namespace Company.API.Controllers
     [ApiController]
     public class CompanyDepartmentsController : ControllerBase
     {
-        // GET: api/<CompanyDepartmentsController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
-        // GET api/<CompanyDepartmentsController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        private readonly IDbService _db;
+        public CompanyDepartmentsController(IDbService db) => _db = db;
 
-        // POST api/<CompanyDepartmentsController>
+        [HttpDelete]
+        public async Task<IResult> Delete(CompanyDepartmentDTO dto) =>
+            await _db.HttpDeleteAsync<CompanyDepartment, CompanyDepartmentDTO>(dto);
+
         [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+        public async Task<IResult> Post(CompanyDepartmentDTO dto) =>
+            await _db.HttpAddAsync<CompanyDepartment, CompanyDepartmentDTO>(dto);
 
-        // PUT api/<CompanyDepartmentsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
 
-        // DELETE api/<CompanyDepartmentsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+
+        //aisdoai blobloblblop
     }
 }

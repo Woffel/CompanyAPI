@@ -21,6 +21,12 @@ namespace Company.Data.Contexts
 
         public DbSet<Employee> Employees => Set<Employee>();
         public DbSet<Position> Positions => Set<Position>();
+
+
+
+        public DbSet<CompanyDepartment> CompanyDepartments => Set<CompanyDepartment>();
+
+        public DbSet<EmployeePositions> EmployeePositions => Set<EmployeePositions>();
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

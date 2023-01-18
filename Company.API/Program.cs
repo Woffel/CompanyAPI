@@ -24,6 +24,8 @@ var config = new MapperConfiguration(cfg =>
     cfg.CreateMap<Employee, EmployeeDTO>().ReverseMap();
     cfg.CreateMap<Position, PositionDTO>().ReverseMap();
     cfg.CreateMap<Department, DepartmentDTO>().ReverseMap();
+    cfg.CreateMap<CompanyDepartment, CompanyDepartmentDTO>().ReverseMap();
+    cfg.CreateMap<EmployeePositions, EmployeePositionsDTO>().ReverseMap();
 });
 
 var mapper = config.CreateMapper();

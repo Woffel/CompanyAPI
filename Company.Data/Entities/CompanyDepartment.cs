@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Company.Data.Interfaces;
 
 namespace Company.Data.Entities
 {
-    public class CompanyDepartment
+    public class CompanyDepartment : IReferenceEntity
     {
         [Required]
         public int CompanyId { get; set; } 
