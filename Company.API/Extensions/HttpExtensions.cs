@@ -28,14 +28,13 @@
                 var entity = await db.AddAsync<TEntity, TDto>(dto);
                 if (await db.SaveChangesAsync())
                 {
-                    var node = typeof(Company.Data.Entities.Company).Name.ToLower();
+                    var node = typeof(TEntity).Name.ToLower();
                     return Results.Created($"{node} / {entity}", entity);
                 }
             }
             catch (Exception e)
             {
                 return Results.BadRequest($"Couldn't add the {typeof(TEntity).Name} entity.\n{e}.");
-
             }
             return Results.BadRequest($"Couldn't add the {typeof(TEntity).Name} entity.");
         }
@@ -68,5 +67,39 @@
             }
             return Results.BadRequest($"Couldn't delete the {typeof(TEntity).Name} entity.");
         }
+
+        public static async Task<IResult> HttpDeleteAsync<TReferenceEntity, TDto>(this IDbService db, TDto dto) where TReferenceEntity : class where TDto : class
+        {
+            try
+            {
+                if (!db.Delete<TReferenceEntity, TDto>(dto)) return Results.NotFound();
+                if(await db.SaveChangesAsync()) return Results.NoContent();
+
+            }
+            catch (Exception e)
+            {
+                return Results.BadRequest(e);
+            }
+            return Results.Ok();
+        }
+        public static async Task<IResult> HttpAddAsync<TReferenceEntity, TDto>(this IDbService db, TDto dto) where TReferenceEntity : class where TDto : class
+        {
+            try
+            {
+                var entity = await db.AddAsync<TReferenceEntity, TDto>(dto);
+                if (await db.SaveChangesAsync())
+                {
+                    var node = typeof(TReferenceEntity).Name.ToLower();
+                    return Results.Created($"{node} / {entity}", entity);
+                }
+            }
+            catch (Exception e)
+            {
+                return Results.BadRequest($"Couldn't add the {typeof(TReferenceEntity).Name} entity.\n{e}.");
+            }
+            return Results.BadRequest($"Couldn't add the {typeof(TReferenceEntity).Name} entity.");
+        }
+
+
     }
 }
